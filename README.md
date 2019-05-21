@@ -26,6 +26,8 @@ The Projec has been divided in TWO Modules :
     Servo Motor used for Gate
 
     Sensors used to detect vehicles infront of gate and in parking spaces.
+    
+    Check arduinocodeforhardware.txt
 
   Nearby Parking Spaces:
 
@@ -39,24 +41,34 @@ The Projec has been divided in TWO Modules :
 
   Licence Plate Detection
 
-  Run the 
+  Run the mainfile.py
 
-    Step1: Take the original image and convert into gray scale using open cv library
+    Step1: Take the original image and convert into gray scale using open cv library (GrayScaleImage.png)
 
-    Step2: Apply bilateral filter to the gray scale image. Bilateral filter is used to preserve images when various operations are done on image
+    Step2: Apply bilateral filter to the gray scale image. Bilateral filter is used to preserve images when various operations are done on image (ImageAfterBilateralFilter.png)
 
-    Step3: Apply Canny Edge detection method to detect edges in images 
+    Step3: Apply Canny Edge detection method to detect edges in images (ImageAfterCannyEdgeDetection.png)
 
     Step4: Then use contours method to find all continuous points having same intensity. The contours are useful for object detection, shape analysis and recognition.
 
-    Step5: Mask the other part other than number plate and show only the license plate part. Convert all other pixels to black.
+    Step5: Mask the other part other than number plate and show only the license plate part. Convert all other pixels to black. (LicencePlateDetection.png)
 
   Number Extraction
 
     Step6: Then use teserract engine for detecting number plate characters by specifying the languages
 
-  Run the QR code 
+  QR CODE
+    
+    Run the qrcodescanandprint.py 
 
-    An employee might not always bring the registered vehicle to the institution. To keep log of these vehicles for future uses. We make use of the unique IDs (QR Codes) that are provided to the employees by the organization. We have used the pyzbar library of python for detection and decoding of the QR codes. The decode function identifies the points that form a quad and mark that region as the QR code. It returns the following details present in the QR Code: type, data and location. Type indicates the kind of code that has been scanned ie whether it is a barcode or a QR code, Data indicates the ID in our case and location provides the coordinates of the quad that is detected around the QR Code (Fig 1). Let’s say an employee gets an unregistered vehicle to the institute. The gate won’t open as the vehicle is not registered. Instead, a scanner will pop up on the screen asking the employee to scan his ID. Once the QR Code is scanned, the ID is extracted from it in the form of a string and it is then verified for its presence in the database. If the ID provided by the employee is a valid ID, the vehicle number will be stored against this ID as an alternate vehicle and the gate will be opened for the vehicle to enter. This will also ensure security as a person, who isn’t a member of the institution, will not be allowed entry as their ID will not be available in the database.
-
-
+    An employee might not always bring the registered vehicle to the institution.
+    To keep log of these vehicles for future uses. We make use of the unique IDs (QR Codes) that are provided to the employees by the organization. 
+    We have used the pyzbar library of python for detection and decoding of the QR codes. 
+    The decode function identifies the points that form a quad and mark that region as the QR code. 
+    It returns the following details present in the QR Code: type, data and location. 
+    Type indicates the kind of code that has been scanned ie whether it is a barcode or a QR code, Data indicates the ID in our case and location provides the coordinates of the quad that is detected around the QR Code (Fig 1). 
+    Let’s say an employee gets an unregistered vehicle to the institute. 
+    The gate won’t open as the vehicle is not registered. Instead, a scanner will pop up on the screen asking the employee to scan his ID. 
+    Once the QR Code is scanned, the ID is extracted from it in the form of a string and it is then verified for its presence in the database. 
+    If the ID provided by the employee is a valid ID, the vehicle number will be stored against this ID as an alternate vehicle and the gate will be opened for the vehicle to enter. 
+    This will also ensure security as a person, who isn’t a member of the institution, will not be allowed entry as their ID will not be available in the database.
